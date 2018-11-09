@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 /*
  * 快速排序的实现:
@@ -30,8 +32,16 @@ void quickSort(vector<int>& arr, int p, int r) {
 
 //测试
 int main() {
-    vector<int> a = {3,5,-1,3,4,2,1,9,5,3};
+    const int n = 20;
+    srand(int(time(0)));
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i) a[i] = rand() % n;
+    cout << "排序前:";
+    for (auto i : a)
+        cout << i << " ";
+    cout << endl;
     quickSort(a, 0, a.size() - 1);
+    cout << "排序后:";
     for (auto i : a)
         cout << i << " ";
     cout << endl;
