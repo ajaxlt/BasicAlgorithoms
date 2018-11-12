@@ -4,37 +4,29 @@
 #include <ctime>
 using namespace std;
 /*
- * æ’å…¥æ’åºçš„å®ç°:
- * ä»ç¬¬äºŒä¸ªå…ƒç´ å¼€å§‹ï¼Œå¾€å‰æ‰¾åˆ°å…¶åˆé€‚çš„ä½ç½®
- * æŒªæ­¥æ³•
+ * ²åÈëÅÅĞòµÄÊµÏÖ:
+ * ´ÓµÚ¶ş¸öÔªËØ¿ªÊ¼£¬ÍùÇ°ÕÒµ½ÆäºÏÊÊµÄÎ»ÖÃ
+ * Å²²½·¨
  */
-void insertionSort(vector<int>& arr, int p, int r){
-    for (int i = p + 1; i <= r; ++i) {
-        int key = arr[i], j = i - 1;
-        // key è¡¨ç¤ºå½“å‰ç›®æ ‡
-        // j è¡¨ç¤ºå½“å‰å¯èƒ½éœ€è¦ä¸ºç›®æ ‡æŒªæ­¥çš„å…ƒç´ 
-        // å¦‚æœè¯´å…ƒç´  j æ¯” key è¦å¤§ï¼Œé‚£ä¹ˆå…ƒç´  j åº”è¯¥å¾€åæŒªä¸€ä½ï¼Œä»¥ä¾¿ä¸º key è…¾å‡ºä½ç½®
-        for (; j >= 0 && arr[j] > key; --j) arr[j + 1] = arr[j];
-        // j å…¨éƒ¨éå†å®Œï¼Œ åˆ™ j + 1 å°±æ˜¯ k çš„ä½ç½®äº†
-        arr[j + 1] = key;
+void insertionSort(vector<int>& a, int p, int r) {
+    int i = 1;//ÒÑÅÅĞòµÄ¸öÊı
+    for(; i <= r; ++i) {
+        int x = a[p + i];//µ±Ç°´ıÅÅĞòµÄÔªËØÖµ
+        int j = p + i - 1;//µ±Ç°ÒÑÅÅĞòÏÂ±ê
+        for (; j >= p && a[j] > x; --j) a[j + 1] = a[j];//Å²²½
+        a[j + 1] = x;//²åÈë
     }
 }
-
-//æµ‹è¯•
+//²âÊÔº¯Êı
 int main() {
     const int n = 20;
     srand(int(time(0)));
     vector<int> a(n);
-    for (int i = 0; i < n; ++i) a[i] = rand() % n;
-    cout << "æ’åºå‰:";
-    for (auto i : a)
-        cout << i << " ";
-    cout << endl;
-    insertionSort(a, 0, n - 1);
-    cout << "æ’åºå:";
-    for (auto i : a)
-        cout << i << " ";
-    cout << endl;
+    for(int &i : a) i = rand() % 100;
+    cout << "ÅÅĞòÇ°£º";
+    for(int &i : a) cout << i <<" ";
+    insertionSort(a, 0, a.size() - 1);
+    cout << endl << "ÅÅĞòºó:";
+    for(int &i : a) cout << i <<" ";
+    return 0;
 }
-
-
