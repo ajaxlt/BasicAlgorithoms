@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/oldman/Documents/Cpp/myString/main.cpp
+iostream
+-
+string
+-
+queue
+-
+
+/Users/oldman/Documents/Cpp/myString/myString.cpp
+myString.h
+/Users/oldman/Documents/Cpp/myString/myString.h
+
+/Users/oldman/Documents/Cpp/myString/myString.h
+assert.h
+-
+iostream
+-
+
