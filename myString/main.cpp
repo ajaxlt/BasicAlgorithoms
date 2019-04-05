@@ -1,16 +1,16 @@
 #include <iostream>
+#include<vector>
+#include<unistd.h>
+#include<cmath>
+#include <csignal>
+#include<queue>
+#include<bitset>
+#include<memory>
 #include "myString.h"
 using namespace std;
 
-
 int main() {
-    char a[] = {'a', 'a', 'a'};
-    char b[] = {'d', 'e', 'f', 'g'};
-
-
-    myString s1(a);
-    myString s2(b);
-
-    s2 = s1;
-    cout << s1;
+    char *a = "aaa";
+    cout << bool(*(a + 2))<<endl;
+    cout << bool(*(a + 3))<< endl;
 }

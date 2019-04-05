@@ -9,10 +9,22 @@
 /Users/oldman/Documents/Cpp/myString/main.cpp
 iostream
 -
-string
+vector
+-
+unistd.h
+-
+cmath
+-
+csignal
 -
 queue
 -
+bitset
+-
+memory
+-
+myString.h
+/Users/oldman/Documents/Cpp/myString/myString.h
 
 /Users/oldman/Documents/Cpp/myString/myString.cpp
 myString.h

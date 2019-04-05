@@ -15,10 +15,8 @@ public:
     myString& operator=(const myString& tmp);
     ~myString();
 
-    friend std::ostream& operator<< (std::ostream& output, const myString& str) {
-        output << str.m_data << std::endl;
-        return output;
-    }
+    size_t size();
+    friend std::ostream& operator<< (std::ostream& output, const myString& str);
 private:
     char* m_data;
 };
