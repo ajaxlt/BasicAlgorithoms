@@ -9,10 +9,10 @@ using namespace std;
  * 挪步法
  */
 void insertionSort(vector<int>& a, int p, int r) {
-    int i = 1;//已排序的个数
+    int i = p + 1;//已排序的个数
     for(; i <= r; ++i) {
-        int x = a[p + i];//当前待排序的元素值
-        int j = p + i - 1;//当前已排序下标
+        int x = a[i];//当前待排序的元素值
+        int j = i - 1;//当前已排序下标
         for (; j >= p && a[j] > x; --j) a[j + 1] = a[j];//挪步
         a[j + 1] = x;//插入
     }

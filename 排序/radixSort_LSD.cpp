@@ -17,31 +17,28 @@ using namespace std;
  * @param[in,out] a 待排序数组
  * @param[in] p 起始下标
  * @param[in] r 终止下标
- * @param[in] maxv 数组中的最大值
- * @param[in] maxBit 数组中的最大位
+ * @param[in] maxn 数组中的最大值
+ * @param[in] maxbit 数组中的最大位
  * @param[in] cnt 统计每次桶里的元素个数
  * @param[in] bucket 桶，存放元素
  */
 void radixSort_LSD(vector<int>& a, int p, int r) {
-    int maxv = a[p];
-    for (int i = p; i <= r; ++i) maxv = max(maxv, a[i]);
-    int maxBit = int(log10(maxv)) + 1;
-    const int num = 10;
-    int cnt[num], bucket[num][r - p + 1];
-    memset(cnt, 0, sizeof(cnt));
-    for (int i = 0; i < maxBit; ++i) { // 位数迭代
-        for (int j = p; j <= r; ++j) {// 入桶
-            int bit = a[j] / int(pow(10, i)) % 10;
-            bucket[bit][cnt[bit]] = a[j];
-            ++cnt[bit];
+    int maxn = INT32_MIN;
+    for (auto i : a) maxn = max(maxn, i);
+    const int maxbit = (int) log10(maxn) + 1;
+    const int digits = 10;
+    vector<vector<int> > bucket(digits, {});
+    for (int i = 0; i < maxbit; ++i) {
+        for (int j = p; j <= r; ++j) {
+            int bit = a[j] / (int) pow(10, i) % 10;
+            bucket[bit].push_back(a[j]);
         }
-
         int j = p;
-        for (int k = 0; k < num; ++k) { // 出桶
-            if (cnt[k]) {
-                for (int l = 0; l < cnt[k]; ++l) a[j++] = bucket[k][l];
-                cnt[k] = 0; // 还原
+        for (auto &b : bucket) {
+            for (auto item : b) {
+                a[j++] = item;
             }
+            b.clear();
         }
     }
 }
